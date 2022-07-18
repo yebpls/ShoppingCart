@@ -11,7 +11,7 @@ function getListProducts() {
   })
     .then((res) => {
       for (let i in res.data) {
-        let id = i
+        let idAPI = res.data[i].id
         let nameAPI = res.data[i].name
         let priceAPI = res.data[i].price
         let screenAPI = res.data[i].screen
@@ -22,7 +22,7 @@ function getListProducts() {
         let typeAPI = res.data[i].type
 
         let productAPI = new Product(
-          id,
+          idAPI,
           nameAPI,
           priceAPI,
           screenAPI,
@@ -125,6 +125,9 @@ const purchase = () => {
     if (result2) {
       alert("Bạn đã mua hàng thành công")
       cart = []
+      totalQuantity = 0
+      document.getElementById("total-qty").innerHTML = totalQuantity
+      document.getElementById("btn-close").click()
     }
   }
   saveLocalStorage()
@@ -247,7 +250,6 @@ function getLocalStorage() {
   if (!qtyJSON) return
   var qtyLocal = JSON.parse(qtyJSON)
   totalQuantity = qtyLocal
-  console.log(totalQuantity)
 }
 
 function mapData(data) {

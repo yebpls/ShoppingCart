@@ -189,11 +189,12 @@
 .products {
   background-color: #f3f3f3;
   padding: 60px 0 140px 0;
-  height: 505px;
+  height: 100%;
 }
 
 .products .container .row {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
 }
 
