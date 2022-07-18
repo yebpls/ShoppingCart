@@ -25,6 +25,9 @@ function getListProduct() {
 getListProduct()
 
 function createProduct() {
+  var isValid = validateForm()
+  if (!isValid) return
+
   var proID = document.getElementById("productId").value
   var prodName = document.getElementById("name").value
   var prodPrice = document.getElementById("price").value
@@ -132,6 +135,10 @@ function updateProduct() {
   })
     .then(function (res) {
       document.getElementById("btnCloseModal").click()
+      document.getElementById("btnReset").click()
+      document.getElementById("btnUpdate").style.display = "none"
+      document.getElementById("btnSaveInfo").style.display = "inline"
+
       getListProduct()
     })
     .catch(function (err) {
@@ -168,4 +175,70 @@ function renderProduct(data) {
   }
 
   document.getElementById("tblDanhSachSP").innerHTML = contentHTML
+}
+
+//VALIDATE
+function validateForm() {
+  var isValid = true
+
+  let prodName = document.getElementById("name").value
+  let prodPrice = document.getElementById("price").value
+  let prodScreen = document.getElementById("screen").value
+  let prodBackCamera = document.getElementById("backCamera").value
+  let prodFrontCamera = document.getElementById("frontCamera").value
+
+  let prodType = document.getElementById("type").value
+
+  isValid &= checkRequired(prodName, "productName")
+
+  isValid &=
+    checkRequired(prodPrice, "productPrice") &&
+    checkNumber(prodPrice, "productPrice")
+
+  isValid &= checkRequired(prodScreen, "productScreen")
+
+  isValid &= checkRequired(prodBackCamera, "productBackCam")
+
+  isValid &= checkRequired(prodFrontCamera, "productFrontCam")
+
+  isValid &= checkRequired(prodType, "productType")
+  return isValid
+}
+
+function checkRequired(val, spanId) {
+  if (val.length > 0) {
+    document.getElementById(spanId).innerHTML = ""
+    return true
+  }
+  document.getElementById(spanId).innerHTML = "* Trường này bắt buộc nhập"
+  return false
+}
+
+function checkCharacter(val, spanId) {
+  var letter =
+    "^[a-zA-Z_ÀÁÂÃÈÉÊẾÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶ" +
+    "ẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợ" +
+    "ụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\\s]+$"
+
+  if (val.match(letter)) {
+    //true
+    document.getElementById(spanId).innerHTML = ""
+    return true
+  }
+
+  //false
+  document.getElementById(spanId).innerHTML = "* Vui lòng nhập chuỗi kí tự"
+  return false
+}
+
+function checkNumber(val, spanId) {
+  var letter = /^[0-9]+$/
+  if (val.match(letter)) {
+    document.getElementById(spanId).innerHTML = ""
+    return true
+  }
+
+  //false
+  document.getElementById(spanId).innerHTML = "* Vui lòng nhập số"
+  return false
 }

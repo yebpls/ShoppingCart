@@ -95,6 +95,8 @@ let deleteItem = (id) => {
   let result = confirm("Bạn có muốn xoá sản phẩm?")
   if (result) {
     cart.splice(i, 1)
+    totalQuantity = totalQuantity - cart[i].quantity
+    document.getElementById("total-qty").innerHTML = totalQuantity
   }
   saveLocalStorage()
   renderCart(cart)
