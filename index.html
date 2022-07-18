@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shopping Cart</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="container">
+        <a class="logo" href="#">
+          <i class="fa-solid fa-wheelchair-move"></i>
+          <span>thegioidichuyen</span>
+        </a>
+        <div class="nav">
+          <button id="cart-btn" class="cart-btn">
+            <i class="fa-solid fa-cart-arrow-down"></i>
+            <span id="total-qty" class="total-qty">0</span>
+          </button>
+        </div>
+      </div>
+      <div class="cart-section" id="cart-section">
+        <div class="cart-header">
+          <h1>Cart</h1>
+          <button class="btn-close" id="btn-close">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+        <div class="cart-items" id="cart-items">
+          <!-- <div class="cart-item">
+            <div class="cart-img">
+              <img
+                src="https://cdn.tgdd.vn/Products/Images/42/114115/iphone-x-64gb-hh-600x600.jpg"
+                alt=""
+              />
+            </div>
+            <p class="cart-name">Iphone13 Pro Max</p>
+            <div class="quantity-change">
+              <button class="btn-qty">
+                <i class="fa-solid fa-plus"></i>
+              </button>
+              <p class="qty">0</p>
+              <button class="btn-qty">
+                <i class="fa-solid fa-minus"></i>
+              </button>
+            </div>
+            <span class="price"></span>
+            <button class="remove">
+              <i class="fa-solid fa-trash"></i>
+            </button>
+          </div> -->
+        </div>
+        <div class="action">
+          <button id="btn-buy">Purchase</button>
+          <button id="btn-clear">Clear</button>
+        </div>
+      </div>
+    </header>
+    <section class="products">
+      <div class="container">
+        <div class="row" id="list-products">
+          <!-- <div class="col">
+            <div class="item">
+              <div class="card">
+                <div class="card-header">
+                  <img
+                    src="https://cdn.tgdd.vn/Products/Images/42/114115/iphone-x-64gb-hh-600x600.jpg"
+                    ,
+                    alt=""
+                  />
+                </div>
+                <div class="card-content">
+                  <span class="price">$1000</span>
+                  <p>
+                    Specification: <br />
+                    * Screen: screen 68 <br />
+                    * Camera-back: 2 camera 12 MP <br />
+                    * Camera-front: 7 MP
+                  </p>
+                  <p class="desc">
+                    Description: <br />
+                    "Thiết kế mang tính đột phá"
+                  </p>
+                </div>
+              </div>
+              <div class="action">
+                <button class="btn-add">
+                  <i class="fa-solid fa-plus"></i>
+                </button>
+                <button class="btn-subtract">
+                  <i class="fa-solid fa-minus"></i>
+                </button>
+              </div>  
+            </div>
+          </div> -->
+        </div>
+      </div>
+    </section>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0-alpha.1/axios.min.js"
+      integrity="sha512-xIPqqrfvUAc/Cspuj7Bq0UtHNo/5qkdyngx6Vwt+tmbvTLDszzXM0G6c91LXmGrRx8KEPulT+AfOOez+TeVylg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="./models/product.js"></script>
+    <script src="./models/cartItem.js"></script>
+    <script src="./js/index.js"></script>
+  </body>
+</html>
